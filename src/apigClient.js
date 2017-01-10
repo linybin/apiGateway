@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://k5kj0x824g.execute-api.ap-northeast-1.amazonaws.com/dev';
+    var invokeUrl = 'https://ij42bvj44d.execute-api.ap-northeast-1.amazonaws.com/dev';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -86,13 +86,13 @@ apigClientFactory.newClient = function (config) {
     apigClient.activityGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['customer_id', 'product_category', 'status', 'vertical'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['customer_id', 'product_category', 'locale', 'status', 'vertical'], ['body']);
         
         var activityGetRequest = {
             verb: 'get'.toUpperCase(),
             path: pathComponent + uritemplate('/activity').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['customer_id', 'product_category', 'status', 'vertical']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['customer_id', 'product_category', 'locale', 'status', 'vertical']),
             body: body
         };
         
@@ -104,13 +104,13 @@ apigClientFactory.newClient = function (config) {
     apigClient.activityPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['customer_id', 'product_category', 'status', 'product_name', 'activity_url', 'vertical'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['customer_id', 'product_category', 'product_url', 'status', 'vertical'], ['body']);
         
         var activityPostRequest = {
             verb: 'post'.toUpperCase(),
             path: pathComponent + uritemplate('/activity').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['customer_id', 'product_category', 'status', 'product_name', 'activity_url', 'vertical']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['customer_id', 'product_category', 'product_url', 'status', 'vertical']),
             body: body
         };
         
@@ -122,36 +122,18 @@ apigClientFactory.newClient = function (config) {
     apigClient.activityPatch = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['customer_id', 'product_category', 'status', 'activity_url', 'id', 'vertical'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['customer_id', 'product_category', 'product_url', 'status', 'id', 'vertical'], ['body']);
         
         var activityPatchRequest = {
             verb: 'patch'.toUpperCase(),
             path: pathComponent + uritemplate('/activity').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['customer_id', 'product_category', 'status', 'activity_url', 'id', 'vertical']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, ['customer_id', 'product_category', 'product_url', 'status', 'id', 'vertical']),
             body: body
         };
         
         
         return apiGatewayClient.makeRequest(activityPatchRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.activityOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var activityOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/activity').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(activityOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
@@ -458,24 +440,6 @@ apigClientFactory.newClient = function (config) {
         
         
         return apiGatewayClient.makeRequest(usersavedsearchPostRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.usersavedsearchOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var usersavedsearchOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/usersavedsearch').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(usersavedsearchOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
 
