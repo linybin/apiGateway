@@ -12,13 +12,12 @@ var srcs= [
     "src/lib/apiGatewayCore/sigV4Client.js",
     "src/lib/apiGatewayCore/apiGatewayClient.js",
     "src/lib/apiGatewayCore/simpleHttpClient.js",
-    "src/lib/apiGatewayCore/utils.js",
-    "src/apigClient.js"]
+    "src/lib/apiGatewayCore/utils.js"]
 
 
 gulp.task("default", function(){
     gulp.src(srcs)
-        .pipe(concat("api-gateway-sdk.js"))
+    .pipe(concat("api-gateway-sdk.js"))
     .pipe(minify())
     .pipe(gulp.dest("dist/"));
 })
